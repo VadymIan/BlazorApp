@@ -2,24 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage(&apos;Checkout&apos;) {
+        stage('Checkout') {
             steps {
-                git &apos;https://github.com/VadymIan/BlazorApp.git&apos;
+                git 'https://github.com/VadymIan/BlazorApp.git'
             }
         }
-        stage(&apos;Build&apos;) {
+        stage('Build') {
             steps {
-                dotnetBuild project: &apos;C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject&apos;, sdk: &apos;.NET SDK&apos;
+                dotnetBuild project: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject', sdk: '.NET SDK'
             }
         }
-        stage(&apos;Run Tests&apos;) {
+        stage('Run Tests') {
             steps {
-                bat &apos;dotnet test --logger &quot;trx;LogFileName=TestResult.trx&quot; C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject\\TestProject.csproj&apos;
+                bat 'dotnet test --logger 'trx;LogFileName=TestResult.trx' C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject\\TestProject.csproj'
             }
             
             post {
                 always {
-                    ws(&apos;C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject\\TestResults&apos;)
+                    ws('C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject\\TestResults')
                     {
                         mstest()
                     }

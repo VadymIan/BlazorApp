@@ -14,7 +14,7 @@ namespace TestProject
         [TestMethod]
         public void TestMethod2()
         {
-            Assert.AreEqual(4 + 1, 2 + 4);
+            Assert.AreEqual(4 + 1, 2 + 3);
         }
     }
 }

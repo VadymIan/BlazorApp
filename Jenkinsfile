@@ -1,18 +1,23 @@
 pipeline {
+    environment {
+    imagename = "mylocaldocker3103/test-project"
+    dockerImage = ''
+  }
+
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Cloning Git') {
             steps {
                 git 'https://github.com/VadymIan/BlazorApp.git'
             }
         }
-        stage('Build') {
+        stage('Building') {
             steps {
                 dotnetBuild project: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject', sdk: '.NET SDK'
             }
         }
-        stage('Run Tests') {
+        stage('Running Tests') {
             steps {
                 bat 'dotnet test --logger "trx;LogFileName=TestResult.trx" C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject\\TestProject.csproj'
             }
@@ -27,5 +32,19 @@ pipeline {
                 }
             }
         }
+		stage('Building image') {
+			steps {
+				script {
+					dockerImage = docker.build(imagename)
+				}
+			}
+		}
+		stage('Pushing image') {
+			steps {
+				script {
+					dockerImage.push('latest')
+				}
+			}
+		}
     }
 }

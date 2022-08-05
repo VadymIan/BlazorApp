@@ -15,7 +15,7 @@ pipeline {
         stage('Building') {
             steps {
 		 sh 'dir'
-                 dotnetBuild project: '//var//lib//jenkins//workspace//BlazorApp//TestProject//TestProject.csproj'
+                 dotnetBuild project: '//TestProject//TestProject.csproj'
             }
         }
         stage('Running Tests') {

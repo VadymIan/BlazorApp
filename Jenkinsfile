@@ -15,7 +15,7 @@ pipeline {
         stage('Building') {
             steps {
 		 sh 'dir'
-                 dotnetBuild project: '//TestProject//TestProject.csproj'
+                 sh 'dotnet build TestProject/TestProject.csproj'
             }
         }
         stage('Running Tests') {

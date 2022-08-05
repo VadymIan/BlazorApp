@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Building') {
             steps {
-                dotnetBuild project: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject', sdk: '.NET SDK'
+                dotnetBuild project: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject'
             }
         }
         stage('Running Tests') {
@@ -32,14 +32,14 @@ pipeline {
                 }
             }
         }
-		stage('Building image') {
+		stage('Building Image') {
 			steps {
 				script {
 					dockerImage = docker.build(imagename)
 				}
 			}
 		}
-		stage('Pushing image') {
+		stage('Pushing Image') {
 			steps {
 				script {
 					dockerImage.push('latest')

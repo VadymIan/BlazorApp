@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Building') {
             steps {
-                dotnetBuild project: 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject'
+                 sh 'dotnetBuild project: //var//lib//jenkins//workspace//BlazorApp//TestProject'
             }
         }
         stage('Running Tests') {

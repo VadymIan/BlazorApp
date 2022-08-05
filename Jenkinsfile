@@ -15,7 +15,7 @@ pipeline {
         stage('Building') {
             steps {
 		 sh 'dir'
-                 sh 'dotnet build /TestProject/TestProject.csproj'
+                 sh 'dotnet build BlazorApp1.sln --configuration Release'
             }
         }
         stage('Running Tests') {

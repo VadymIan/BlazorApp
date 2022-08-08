@@ -43,7 +43,9 @@ pipeline {
 	stage('Pushing Image') {
 		steps {
 			script {
-				dockerImage.push('latest')				
+				withCredentials([gitUsernamePassword(credentialsId: 'mylocaldocker3103', gitToolName: 'git-tool')]) {
+					dockerImage.push('latest')
+				}
 			}
 		}
 	}

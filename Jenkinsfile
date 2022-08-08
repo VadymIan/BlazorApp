@@ -43,7 +43,7 @@ pipeline {
 	stage('Pushing Image') {
 		steps {
 			script {
-				withCredentials([gitUsernamePassword(credentialsId: 'docker-hub', gitToolName: 'git-tool')]) {
+				withCredentials([gitUsernamePassword(credentialsId: 'myapp', gitToolName: 'git-tool')]) {
 					dockerImage.push('latest')
 				}
 			}

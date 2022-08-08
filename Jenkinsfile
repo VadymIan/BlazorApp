@@ -25,7 +25,7 @@ pipeline {
             
             post {
                 always {
-                    ws('C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject\\TestResults')
+                    ws('/var/lib/jenkins/workspace/BlazorApp/TestProject/TestResults')
                     {
                         mstest()
                     }

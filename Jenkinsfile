@@ -28,8 +28,7 @@ pipeline {
                     ws('/var/lib/jenkins/workspace/BlazorApp/TestProject/TestResults')
                     {
                         mstest()
-                    }
-                    
+                    }                    
                 }
             }
         }

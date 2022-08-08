@@ -43,7 +43,9 @@ pipeline {
 		stage('Pushing Image') {
 			steps {
 				script {
-					dockerImage.push('latest')
+					docker.withRegistry('https://registry.hub.docker.com', 'mylocaldocker3103') {
+						dockerImage.push('latest')
+					}					
 				}
 			}
 		}

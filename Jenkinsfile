@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Running Tests') {
             steps {
-                bat 'dotnet test --logger "trx;LogFileName=TestResult.trx" C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\BlazorApp\\TestProject\\TestProject.csproj'
+                sh 'dotnet test --logger "trx;LogFileName=TestResult.trx" TestProject\\TestProject.csproj'
             }
             
             post {

@@ -33,21 +33,19 @@ pipeline {
                 }
             }
         }
-		stage('Building Image') {
-			steps {
-				script {
-					dockerImage = docker.build(imagename)
-				}
+	stage('Building Image') {
+		steps {
+			script {
+				dockerImage = docker.build(imagename)
 			}
 		}
-		stage('Pushing Image') {
-			steps {
-				script {
-					docker.withRegistry('https://registry.hub.docker.com', 'mylocaldocker3103') {
-						dockerImage.push('latest')
-					}					
-				}
+	}
+	stage('Pushing Image') {
+		steps {
+			script {
+				dockerImage.push('latest')				
 			}
 		}
+	}
     }
 }

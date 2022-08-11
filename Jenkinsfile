@@ -50,7 +50,7 @@ pipeline {
 	}
 	stage('Deploying App on Azure') {
 		steps {
-			sh 'msbuild BlazorApp1/BlazorApp1.csproj -c Release /p:DeployOnBuild=true /p:PublishProfile="blazorApp - Web Deploy"'
+			sh 'dotnet publish BlazorApp1/BlazorApp1.csproj /p:PublishProfile="blazorApp - Web Deploy" --configuration Release'
 		}
 	}
     }

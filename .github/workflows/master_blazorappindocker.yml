@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_60326ca8b49c47369140ba144a474ea8 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_00d6ae77729f42469f7a857d3d495700 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_fed3eadbcaad4b16a687836af1f2a749 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_fbf42c9dc669464a9a8db4f47218d848 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_60326ca8b49c47369140ba144a474ea8 }}/mylocaldocker3103/test-project:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_fed3eadbcaad4b16a687836af1f2a749 }}/mylocaldocker3103/test-project:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'blazorappindocker'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_00e5a68c592a41528cd72dbaa9434a49 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_60326ca8b49c47369140ba144a474ea8 }}/mylocaldocker3103/test-project:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_cffe1119c27d4c79988986145c2627e5 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_fed3eadbcaad4b16a687836af1f2a749 }}/mylocaldocker3103/test-project:${{ github.sha }}'

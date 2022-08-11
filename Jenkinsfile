@@ -48,10 +48,5 @@ pipeline {
 			}
 		}
 	}
-	stage('Deploying App on Azure') {
-		steps {
-			sh 'dotnet publish BlazorApp1/BlazorApp1.csproj --configuration Release /p:PublishProfile="blazorApp - Web Deploy"'
-		}
-	}
     }
 }
